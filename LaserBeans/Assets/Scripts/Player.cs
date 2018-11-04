@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour {
              if (Input.GetMouseButtonDown(0) && ammo != 0){
                 GameObject clone;
 				clone = Instantiate(bullet, transform.position + (Vector3.down/2), Quaternion.identity);
-                clone.GetComponent<Rigidbody>().AddForce(laserBean.direction * 40f, ForceMode.Impulse);
+                clone.GetComponent<Rigidbody>().AddForce(laserBean.direction * 50f, ForceMode.Impulse);
                 bulletImage1[ammo-1].SetActive(false);
 				ammo--;
 			}
@@ -71,5 +72,12 @@ public class Player : MonoBehaviour {
 			outofamo.SetActive(false);
 		}
 		ammoc.text = ammo.ToString();
+		if (ammo == 0) {
+			Invoke ("sceneHandler1", 5);
+		}
+	}
+
+	void sceneHandler1() {
+		SceneManager.LoadScene(3);
 	}
 }
