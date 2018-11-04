@@ -10,6 +10,7 @@ public class Destroyer : MonoBehaviour {
 	private Vector3 origi;
 	public static int victims, targets;
 	public Text vicT, tarT;
+	public AudioClip wrong, hit;
 	// Use this for initialization
 	void Start () {
 		origi = transform.position;
@@ -31,6 +32,12 @@ public class Destroyer : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.CompareTag("bullet")) {
+            if (gameObject.CompareTag("left")){
+                gameObject.GetComponent<AudioSource>().Play();
+            }
+			if (gameObject.CompareTag("right")){
+                gameObject.GetComponent<AudioSource>().Play();
+			}
 			gameObject.SetActive(false);
 			other.gameObject.SetActive(false);
 		}

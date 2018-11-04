@@ -63,6 +63,7 @@ public class Player : MonoBehaviour {
                 clone.GetComponent<Rigidbody>().AddForce(laserBean.direction * 50f, ForceMode.Impulse);
                 bulletImage1[ammo-1].SetActive(false);
 				ammo--;
+				GetComponent<AudioSource>().Play();
 			}
 		}
 		if (ammo == 0) {
