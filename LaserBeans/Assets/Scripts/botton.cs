@@ -7,7 +7,9 @@ public class botton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		if (SceneManager.GetActiveScene().buildIndex != 1) {
+			Cursor.visible = true;
+		}
 	}
 	
 	// Update is called once per frame
